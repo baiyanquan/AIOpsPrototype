@@ -24,7 +24,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2">
-                        <el-button type="primary" size="mini">点击切换</el-button>
+                        <el-button type="primary" size="mini" @click="switch_kg">点击切换</el-button>
                     </el-col>
                 </el-row>
 
@@ -89,6 +89,21 @@
                     label: '101'
                 }],
                 value: 105
+            }
+        },
+        methods: {
+            switch_kg() {
+                if (this.value === '105') {
+                    this.root_cause_reason_url = require('../../assets/root-cause-analysis.png')
+                } else if(this.value === '104') {
+                    this.root_cause_reason_url = require('../../assets/root-cause-analysis1.png')
+                } else if(this.value === '103') {
+                    this.root_cause_reason_url = require('../../assets/root-cause-analysis2.png')
+                } else if(this.value === '102') {
+                    this.root_cause_reason_url = require('../../assets/root-cause-analysis2.png')
+                } else if(this.value === '101') {
+                    this.root_cause_reason_url = require('../../assets/root-cause-analysis2.png')
+                }
             }
         }
     }
