@@ -244,6 +244,12 @@
                     value: '手动更新',
                     label: '手动更新'
                 }],
+                anomaly_chart_data:[
+                    ["2020-06-10 02:00:00", 2],
+                    ["2020-06-10 04:00:00", 3],
+                    ["2020-06-10 06:00:00", 2],
+                    ["2020-06-10 08:00:00", 1],
+                    ["2020-06-10 10:00:00", 3]]
             }
         },
         mounted(){
@@ -299,12 +305,7 @@
                     series: [{
                         name: 'unselected',
                         type: 'scatter',
-                        data: [
-                            ["2020-06-10 02:00:00", 2],
-                            ["2020-06-10 04:00:00", 3],
-                            ["2020-06-10 06:00:00", 2],
-                            ["2020-06-10 08:00:00", 1],
-                            ["2020-06-10 10:00:00", 3]],
+                        data: this.anomaly_chart_data,
                         symbolSize: 20,
                     },{
                         name: 'selected',
@@ -314,6 +315,18 @@
                         symbolSize: 20,
                     }]
                 });
+
+                myChart.on('click', (param) => {
+                    if(param.value[0] === this.anomaly_chart_data[0][0]){
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG.png')
+                    } else if(param.value[0] === this.anomaly_chart_data[1][0]) {
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG1.png')
+                    } else if(param.value[0] === this.anomaly_chart_data[2][0]) {
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG2.png')
+                    } else if(param.value[0] === this.anomaly_chart_data[3][0]) {
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG3.png')
+                    }
+                })
             }
         }
     }
