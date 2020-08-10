@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="20" :offset="2">
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                     <el-col :span="5">
@@ -14,7 +14,7 @@
                         <div class="content"><b>异常事件id：</b></div>
                     </el-col>
                     <el-col :span="2">
-                        <el-select v-model="value" size="mini" placeholder="请选择">
+                        <el-select v-model="value" size="small" placeholder="请选择">
                             <el-option
                                     v-for="item in options"
                                     :key="item.value"
@@ -24,7 +24,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2">
-                        <el-button type="primary" size="mini">点击切换</el-button>
+                        <el-button type="primary" size="small">点击切换</el-button>
                     </el-col>
                 </el-row>
 
@@ -36,17 +36,17 @@
                     <el-col :span="16" v-if="model1===0">
                         使用日志pattern序列异常检测模型进行分析，检测相应的日志pattern序列是否存在增加、缺失、替换等异常
                     </el-col>
-                    <el-col :span="1" :offset="12" v-if="model1===1">
+                    <el-col :span="1" :offset="10" v-if="model1===1">
                         <div style="height:25px;width: 25px;background: #0adf93;margin-left: 15px"></div>
                     </el-col>
-                    <el-col :span="1" v-if="model1===1" style="text-align: left">
-                        <span style="font-size: 12px">正常日志</span>
+                    <el-col :span="2" v-if="model1===1" style="text-align: left">
+                        <span style="font-size: 16px">正常日志</span>
                     </el-col>
                     <el-col :span="1" v-if="model1===1">
                         <div style="height:25px;width: 25px;background: #e00b0b;margin-left: 15px"></div>
                     </el-col>
-                    <el-col :span="2" v-if="model1===1" style="text-align: left">
-                        <span style="font-size: 12px">检测出异常的日志</span>
+                    <el-col :span="3" v-if="model1===1" style="text-align: left">
+                        <span style="font-size: 16px">检测出异常的日志</span>
                     </el-col>
                 </el-row>
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center" v-if="model1===1">
@@ -86,17 +86,17 @@
                     <el-col :span="16" v-if="model2===0">
                         使用属性值异常检测模型进行分析，检测相关运维实体的属性值是否存在异常
                     </el-col>
-                    <el-col :span="1" :offset="12" v-if="model2===1">
+                    <el-col :span="1" :offset="10" v-if="model2===1">
                         <div style="height:25px;width: 25px;background: #0adf93;margin-left: 15px"></div>
                     </el-col>
-                    <el-col :span="1" v-if="model2===1" style="text-align: left">
-                        <span style="font-size: 12px">正常日志</span>
+                    <el-col :span="2" v-if="model2===1" style="text-align: left">
+                        <span style="font-size: 16px">正常日志</span>
                     </el-col>
                     <el-col :span="1" v-if="model2===1">
                         <div style="height:25px;width: 25px;background: #f7a643;margin-left: 15px"></div>
                     </el-col>
-                    <el-col :span="2" v-if="model2===1" style="text-align: left">
-                        <span style="font-size: 12px">检测出异常的日志</span>
+                    <el-col :span="3" v-if="model2===1" style="text-align: left">
+                        <span style="font-size: 16px">检测出异常的日志</span>
                     </el-col>
                 </el-row>
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center" v-if="model2===1">
@@ -130,8 +130,8 @@
 
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                     <el-col :span="5">
-                        <el-button size="medium" type="warning" v-if="compare_model===0" v-loading.fullscreen.lock="fullscreenLoading" @click="click_compare_model" style="width:90%">工作流画像比对算法智能检测模型</el-button>
-                        <el-button size="medium" type="warning" v-else plain @click="compare_model=0" style="width:90%">工作流画像比对算法智能检测模型</el-button>
+                        <el-button size="medium" type="warning" v-if="compare_model===0" v-loading.fullscreen.lock="fullscreenLoading" @click="click_compare_model">工作流画像比对算法智能检测模型</el-button>
+                        <el-button size="medium" type="warning" v-else plain @click="compare_model=0">工作流画像比对算法智能检测模型</el-button>
                     </el-col>
                     <el-col :span="16" v-if="compare_model===0">
                         使用画像比对算法进行检测，将目标工作流的画像与正常画像进行比对，分析工作流中是否存在异常
@@ -143,33 +143,33 @@
                                 active-color="#13ce66">
                         </el-switch>
                     </el-col>
-                    <el-col :span="3" v-if="compare_model===1" style="font-size: 12px">
+                    <el-col :span="4" v-if="compare_model===1" style="font-size: 16px">
                         <span v-if="compare_open">展示正常日志工作流-开</span>
                         <span v-else>展示正常日志工作流-关</span>
                     </el-col>
-                    <el-col :span="1" :offset="5" v-if="compare_model===1">
+                    <el-col :span="1" :offset="4" v-if="compare_model===1">
                         <div style="height:20px; width: 20px;background: #ff0000; margin-left: 20px"></div>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1" style="text-align: left">
-                        <span style="font-size: 12px">异常</span>
+                        <span style="font-size: 16px">异常</span>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1">
                         <div style="height:20px; width: 20px;background: #0900ff;margin-left: 20px"></div>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1" style="text-align: left">
-                        <span style="font-size: 12px">新增</span>
+                        <span style="font-size: 16px">新增</span>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1">
                         <div style="height:20px; width: 20px;background: #090000;margin-left: 20px"></div>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1" style="text-align: left">
-                        <span style="font-size: 12px">删除</span>
+                        <span style="font-size: 16px">删除</span>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1">
                         <div style="height:20px; width: 20px;background: #ffff00;margin-left: 20px"></div>
                     </el-col>
                     <el-col :span="1" v-if="compare_model===1" style="text-align: left">
-                        <span style="font-size: 12px">移动</span>
+                        <span style="font-size: 16px">移动</span>
                     </el-col>
                 </el-row>
                 <el-row style="margin-top: 10px; margin-bottom: 40px; text-align: left; display: flex; align-items: center" v-if="compare_model===1">
@@ -444,7 +444,7 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
@@ -452,7 +452,7 @@
     }
     .content{
         margin-left: 10px;
-        font-size: 14px;
+        font-size: 16px;
         color:#101010;
         height: 28px;
         line-height: 28px

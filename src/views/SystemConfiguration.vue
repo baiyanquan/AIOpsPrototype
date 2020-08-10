@@ -1,24 +1,24 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="20" :offset="2">
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                     <el-col :span="2">
                         <div class="title">规则配置</div>
                     </el-col>
                     <el-col :span="2">
-                        <el-button size="mini" type="success">添加新规则</el-button>
+                        <el-button size="small" type="success">添加新规则</el-button>
                     </el-col>
                     <el-col :span="2">
-                        <el-button size="mini" type="warning">导出</el-button>
+                        <el-button size="small" type="warning">导出</el-button>
                     </el-col>
                 </el-row>
                 <el-row style="margin-top: 10px">
                     <template>
                         <el-table
                                 :data="tableData"
-                                style="width: 100%">
+                                style="width: 100%;font-size:16px">
                             <el-table-column
                                     label="id"
                                     width="120">
@@ -50,10 +50,10 @@
                             <el-table-column label="操作">
                                 <template>
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="primary">修改</el-button>
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="success">删除</el-button>
                                 </template>
                             </el-table-column>
@@ -169,7 +169,7 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
@@ -177,7 +177,7 @@
     }
     .content{
         margin-left: 10px;
-        font-size: 14px;
+        font-size: 16px;
         color:#101010;
         height: 28px;
         line-height: 28px

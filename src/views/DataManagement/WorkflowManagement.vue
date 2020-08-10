@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="20" :offset="2">
                 <el-row>
                     <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
@@ -9,13 +9,13 @@
                             <div class="title">工作流列表</div>
                         </el-col>
                         <el-col :span="3">
-                            <el-input v-model="input" placeholder="请输入内容" prefix-icon="el-icon-search" size="mini"></el-input>
+                            <el-input v-model="input" placeholder="请输入内容" prefix-icon="el-icon-search" size="small"></el-input>
                         </el-col>
                         <el-col :span="2" style="margin-left: 10px">
-                            <el-button size="mini" type="success">查询工作流</el-button>
+                            <el-button size="small" type="success">查询工作流</el-button>
                         </el-col>
                         <el-col :span="2">
-                            <el-button size="mini" type="warning">新增工作流</el-button>
+                            <el-button size="small" type="warning">新增工作流</el-button>
                         </el-col>
                     </el-row>
                 </el-row>
@@ -23,7 +23,7 @@
                     <template>
                         <el-table
                                 :data="tableData"
-                                style="width: 100%">
+                                style="width: 100%; font-size: 16px">
                             <el-table-column
                                     label="工作流id"
                                     width="400">
@@ -41,10 +41,10 @@
                             <el-table-column label="操作">
                                 <template slot-scope="scope">
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="primary">编辑</el-button>
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="danger">删除</el-button>
                                 </template>
                             </el-table-column>
@@ -65,16 +65,16 @@
                             <div class="title">工作流 {{workflow_show}} 相应画像</div>
                         </el-col>
                         <el-col :span="1" style="text-align: center">
-                            <el-button type="primary" icon="el-icon-edit" circle size="mini"></el-button>
+                            <el-button type="primary" icon="el-icon-edit" circle size="small"></el-button>
                         </el-col>
                         <el-col :span="1" style="text-align: center">
-                            <el-button type="success" icon="el-icon-check" circle size="mini"></el-button>
+                            <el-button type="success" icon="el-icon-check" circle size="small"></el-button>
                         </el-col>
                         <el-col :span="1" style="text-align: center">
-                            <el-button type="warning" icon="el-icon-star-off" circle size="mini"></el-button>
+                            <el-button type="warning" icon="el-icon-star-off" circle size="small"></el-button>
                         </el-col>
                         <el-col :span="1" style="text-align: center">
-                            <el-button type="danger" icon="el-icon-delete" circle size="mini"></el-button>
+                            <el-button type="danger" icon="el-icon-delete" circle size="small"></el-button>
                         </el-col>
 
                         <el-col :span="3" :offset="1" v-if="workflow_show===1">
@@ -84,14 +84,14 @@
                             <div class="title">后置工作流：</div>
                         </el-col>
                         <el-col :span="1" v-if="workflow_show===1">
-                            <el-button type="text" size="mini" style="font-size: 16px" @click="workflow_show=2">1</el-button>
+                            <el-button type="text" size="small" style="font-size: 16px" @click="workflow_show=2">1</el-button>
                         </el-col>
 
                         <el-col :span="3" :offset="1" v-if="workflow_show===2">
                             <div class="title">前置工作流：</div>
                         </el-col>
                         <el-col :span="1" v-if="workflow_show===2">
-                            <el-button type="text" size="mini" style="font-size: 16px" @click="workflow_show=1">2</el-button>
+                            <el-button type="text" size="small" style="font-size: 16px" @click="workflow_show=1">2</el-button>
                         </el-col>
                         <el-col :span="3" :offset="1" v-if="workflow_show===2">
                             <div class="title">后置工作流：无</div>
@@ -286,7 +286,7 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;

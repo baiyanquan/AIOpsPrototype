@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="20" :offset="2">
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                     <el-col :span="2">
@@ -54,7 +54,7 @@
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 20px; text-align: left; display: flex; align-items: center">
-                        <el-col :span="2">
+                        <el-col :span="3">
                             <div class="content">默认环境</div>
                         </el-col>
                         <el-col :span="3">
@@ -62,7 +62,7 @@
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 20px; text-align: left; display: flex; align-items: center">
-                        <el-col :span="2">
+                        <el-col :span="3">
                             <div class="content">显示实体列表</div>
                         </el-col>
                         <el-col :span="6">
@@ -70,7 +70,7 @@
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 20px; text-align: left; display: flex; align-items: center">
-                        <el-col :span="2">
+                        <el-col :span="3">
                             <div class="content">显示风格</div>
                         </el-col>
                         <el-col :span="3">
@@ -224,7 +224,7 @@
         data(){
             return{
                 status: 0,
-                time1: new Date(2020, 5, 10, 16, 16, 0),
+                time1: new Date(2020, 5, 10, 16, 0, 0),
                 system_status_management_KG_url: require('../../assets/system-status-management-KG.png'),
                 default_env: 'k8s',
                 show_entity_list: 'namespace; service; pod; container; server',
@@ -249,7 +249,17 @@
                     ["2020-06-10 04:00:00", 3],
                     ["2020-06-10 06:00:00", 2],
                     ["2020-06-10 08:00:00", 1],
-                    ["2020-06-10 10:00:00", 3]]
+                    ["2020-06-10 10:00:00", 3]],
+                selected_anomaly_chart_data:[
+                    ["2020-06-10 16:00:00", 2]],
+                all_anomaly_chart_data: [
+                    ["2020-06-10 02:00:00", 2],
+                    ["2020-06-10 04:00:00", 3],
+                    ["2020-06-10 06:00:00", 2],
+                    ["2020-06-10 08:00:00", 1],
+                    ["2020-06-10 10:00:00", 3],
+                    ["2020-06-10 16:00:00", 2]
+                ],
             }
         },
         mounted(){
@@ -257,25 +267,22 @@
         },
         methods: {
             drawLine() {
-                // 基于准备好的dom，初始化echarts实例
-                let myChart = this.$echarts.init(document.getElementById('myChart'))
-                // 绘制图表
-                myChart.setOption({
+                let chart_options = {
                     title: {
                         text: "异常事件时间轴",
-                        textStyle: {
-                            fontSize: 14,
+                            textStyle: {
+                            fontSize: 16,
                         },
                         x: '120px'
                     },
                     tooltip: {
                         trigger: "axis",
-                        showDelay: 0,
-                        axisPointer: {
+                            showDelay: 0,
+                            axisPointer: {
                             type: "cross",
-                            lineStyle: {
+                                lineStyle: {
                                 type: "dashed",
-                                width: 1
+                                    width: 1
                             }
                         }
                     },
@@ -287,7 +294,7 @@
                             scale: true
                         }
                     ],
-                    yAxis: [
+                        yAxis: [
                         {
                             type: "value",
                             power: 1,
@@ -302,30 +309,57 @@
                             }
                         }
                     ],
-                    series: [{
-                        name: 'unselected',
+                        series: [{
+                        name: '异常事件数',
                         type: 'scatter',
                         data: this.anomaly_chart_data,
-                        symbolSize: 20,
+                        symbol: 'triangle',
+                        color: '#dd5246',
+                        symbolSize: 30,
                     },{
-                        name: 'selected',
+                        name: '当前选中时间的异常事件数',
                         type: 'scatter',
-                        data: [
-                            ["2020-06-10 16:00:00", 2]],
-                        symbolSize: 20,
+                        data: this.selected_anomaly_chart_data,
+                        symbol: 'pin',
+                        color: '#ffce44',
+                        symbolSize: 40,
                     }]
-                });
+                };
+
+                // 基于准备好的dom，初始化echarts实例
+                let myChart = this.$echarts.init(document.getElementById('myChart'))
+                // 绘制图表
+                myChart.setOption(chart_options);
 
                 myChart.on('click', (param) => {
-                    if(param.value[0] === this.anomaly_chart_data[0][0]){
-                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG.png')
-                    } else if(param.value[0] === this.anomaly_chart_data[1][0]) {
-                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG1.png')
-                    } else if(param.value[0] === this.anomaly_chart_data[2][0]) {
+                    if(param.value[0] === this.all_anomaly_chart_data[0][0]){
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG.png');
+                        this.time1 = new Date(2020, 5, 10, 2, 0, 0);
+                    } else if(param.value[0] === this.all_anomaly_chart_data[1][0]) {
                         this.system_status_management_KG_url = require('../../assets/system-status-management-KG2.png')
-                    } else if(param.value[0] === this.anomaly_chart_data[3][0]) {
+                        this.time1 = new Date(2020, 5, 10, 4, 0, 0);
+                    } else if(param.value[0] === this.all_anomaly_chart_data[2][0]) {
                         this.system_status_management_KG_url = require('../../assets/system-status-management-KG3.png')
+                        this.time1 = new Date(2020, 5, 10, 6, 0, 0);
+                    } else if(param.value[0] === this.all_anomaly_chart_data[3][0]) {
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG4.png')
+                        this.time1 = new Date(2020, 5, 10, 8, 0, 0);
+                    } else if(param.value[0] === this.all_anomaly_chart_data[4][0]) {
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG5.png')
+                        this.time1 = new Date(2020, 5, 10, 10, 0, 0);
+                    } else if(param.value[0] === this.all_anomaly_chart_data[5][0]) {
+                        this.system_status_management_KG_url = require('../../assets/system-status-management-KG6.png')
+                        this.time1 = new Date(2020, 5, 10, 16, 0, 0);
                     }
+                    chart_options["series"][0]["data"].push(chart_options["series"][1]["data"][0]);
+                    chart_options["series"][1]["data"].splice(0);
+                    chart_options["series"][0]["data"].forEach(function(item, index, arr) {
+                        if(item[0] === param.value[0]) {
+                            chart_options["series"][1]["data"].push(item);
+                            arr.splice(index, 1);
+                        }
+                    });
+                    myChart.setOption(chart_options);
                 })
             }
         }
@@ -335,7 +369,7 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
@@ -343,7 +377,7 @@
     }
     .content{
         margin-left: 10px;
-        font-size: 14px;
+        font-size: 16px;
         color:#101010;
         height: 28px;
         line-height: 28px

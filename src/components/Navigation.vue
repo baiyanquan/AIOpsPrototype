@@ -1,18 +1,18 @@
 <template>
     <div>
         <el-row class="top-bar">
-            <el-col :span="5">
-                <el-button type="text" style="margin-left: 20px; color:#101010; height: 40px"><i class="el-icon-menu"></i></el-button>
-                <el-button type="text" style="margin-left: 10px; color:#101010; height: 50px; font-size: 16px; font-weight: bolder">
+            <el-col :span="8">
+                <el-button type="text" style="margin-left: 20px; color:#101010; height: 40px" class="title-font-size"><i class="el-icon-menu"></i></el-button>
+                <el-button type="text" style="margin-left: 10px; color:#101010; height: 50px; font-weight: bolder" class="title-font-size">
                     <span>Tongji&nbsp;</span>
                     <span style="color: #1E98EA">X</span>
                     <span>Lab</span>
                 </el-button>
-                <el-button type="text" style="color:#101010; height: 50px; font-size: 16px; font-weight: bolder">
+                <el-button type="text" style="color:#101010; height: 50px; font-weight: bolder" class="title-font-size">
                     智能运维原型
                 </el-button>
             </el-col>
-            <el-col :span="5" :offset="4">
+            <el-col :span="5">
                 <el-input
                         placeholder="请输入想要搜索的内容"
                         prefix-icon="el-icon-search"
@@ -20,12 +20,12 @@
                         v-model="input">
                 </el-input>
             </el-col>
-            <el-col :span="1">
+            <el-col :span="4">
                 <div style="height: 50px; display: flex; align-items: center">
                     <el-button type="primary" style="height: 40px">搜索</el-button>
                 </div>
             </el-col>
-            <el-col :span="1" :offset="7">
+            <el-col :span="1" :offset="4">
                 <div class="block" style="height: 50px; display: flex; align-items: center; justify-content:center">
                     <el-avatar size="medium" :src="circleUrl"></el-avatar>
                 </div>
@@ -36,10 +36,10 @@
                 </el-button>
             </el-col>
         </el-row>
-        <el-row>
+        <el-row style="width: 1536px;">
             <el-col :offset="2" :span="22">
                 <el-menu :default-active="$route.path" class="navigation-menu" mode="horizontal" text-color="#101010"
-                         active-text-color="#1E98EA" @select="handleSelect" router>
+                         active-text-color="#1E98EA" @select="handleSelect" router style="font-size: 18px">
                     <el-menu-item index="/"><i class="el-icon-s-home"></i>首页</el-menu-item>
                     <el-submenu index="/alarm-monitoring">
                         <template slot="title" ><i class="el-icon-message-solid"></i>异常告警与分析</template>
@@ -90,10 +90,10 @@
 <style>
     .top-bar{
         color: #101010;
-        font-size: 24px;
         text-align: left;
         height: 50px;
         background: white;
+        width: 1536px;
     }
     .navigation-menu{
         background-color: #F1F3F4;
@@ -101,18 +101,23 @@
         margin-top: 0;
     }
     .navigation-sub-menu{
-        font-size:12px;
+        font-size:16px;
         margin-left: 10px;
     }
     .el-menu--horizontal>.el-submenu .el-submenu__title{
         height: 50px;
         line-height: 50px;
+        font-size: 18px;
     }
     .el-menu--horizontal>.el-menu-item{
         height: 50px;
         line-height: 50px;
+        font-size: 18px;
     }
     .search-input{
         line-height: 50px;
+    }
+    .title-font-size{
+        font-size: 18px;
     }
 </style>

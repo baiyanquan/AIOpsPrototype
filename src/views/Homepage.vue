@@ -1,26 +1,27 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="20" :offset="2">
                 <el-row>
                     <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
-                        <el-col :span="2">
+                        <el-col style="width: 96px">
                             <div class="title">告警信息</div>
                         </el-col>
-                        <el-col :span="2">
-                            <el-button size="mini" type="success">全部设为已读</el-button>
+                        <el-col style="width: 96px">
+                            <el-button size="small" type="success">全部设为已读</el-button>
                         </el-col>
                     </el-row>
                 </el-row>
-                <el-row style="margin-top: 10px">
+                <el-row style="margin-top: 10px; width: 1280px">
                     <template>
                         <el-table
                                 :data="tableData"
-                                style="width: 100%">
+                                style="width: 100%"
+                                class="content-font">
                             <el-table-column
                                     label="id"
-                                    width="130">
+                                    width="100">
                                 <template slot-scope="scope">
                                     <span>{{ scope.row.id }}</span>
                                 </template>
@@ -29,8 +30,8 @@
                                     label="发生时间"
                                     width="250">
                                 <template slot-scope="scope">
-                                    <i class="el-icon-time"></i>
-                                    <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                                    <i class="el-icon-time content-font"></i>
+                                    <span style="margin-left: 10px" class="content-font">{{ scope.row.date }}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column
@@ -54,28 +55,30 @@
                                     <span>{{ scope.row.description }}</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column label="操作">
+                            <el-table-column
+                                    label="操作"
+                                    width="240">
                                 <template slot-scope="scope">
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="primary"
                                             @click="preliminary_analysis(scope.$index, scope.row)">告警分析</el-button>
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="success">设为已读</el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
                     </template>
                 </el-row>
-                <el-row style="margin-bottom: 40px">
+                <el-row style="margin-bottom: 40px; width: 1265px">
                     <el-col :span="11">
                         <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
-                            <el-col :span="4">
+                            <el-col style="width: 96px">
                                 <div class="title">系统状态</div>
                             </el-col>
-                            <el-col :span="4">
-                                <el-button size="mini" type="primary" @click="viewKG">查看详情</el-button>
+                            <el-col style="width: 96px">
+                                <el-button size="small" type="primary" @click="viewKG">查看详情</el-button>
                             </el-col>
                         </el-row>
                         <el-row style="margin-top: 10px; display: flex; align-items: center">
@@ -91,14 +94,14 @@
                     </el-col>
                     <el-col :span="11" :offset="2">
                         <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
-                            <el-col :span="4">
+                            <el-col style="width: 96px">
                                 <div class="title">日志统计</div>
                             </el-col>
-                            <el-col :span="4">
+                            <el-col style="width: 96px">
                                 <el-date-picker
                                         v-model="value1"
                                         type="datetimerange"
-                                        size="mini"
+                                        size="small"
                                         range-separator="至"
                                         start-placeholder="开始日期"
                                         end-placeholder="结束日期">
@@ -199,10 +202,13 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
         line-height: 28px
+    }
+    .content-font{
+        font-size: 16px;
     }
 </style>

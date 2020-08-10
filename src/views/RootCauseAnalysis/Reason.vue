@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="16" :offset="4">
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                     <el-col :span="5">
@@ -14,7 +14,7 @@
                         <div class="content"><b>异常事件id：</b></div>
                     </el-col>
                     <el-col :span="2">
-                        <el-select v-model="value" size="mini" placeholder="请选择">
+                        <el-select v-model="value" size="small" placeholder="请选择">
                             <el-option
                                     v-for="item in options"
                                     :key="item.value"
@@ -24,7 +24,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2">
-                        <el-button type="primary" size="mini" @click="switch_kg">点击切换</el-button>
+                        <el-button type="primary" size="small" @click="switch_kg">点击切换</el-button>
                     </el-col>
                 </el-row>
 
@@ -112,7 +112,7 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
@@ -120,7 +120,7 @@
     }
     .content{
         margin-left: 10px;
-        font-size: 14px;
+        font-size: 16px;
         color:#101010;
         height: 28px;
         line-height: 28px

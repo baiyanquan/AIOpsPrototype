@@ -3,34 +3,34 @@
         <Navigation/>
         <el-row>
             <el-col :span="20" :offset="2">
-                <el-row>
+                <el-row style="width: 1265px">
                     <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                         <el-col :span="2">
                             <div class="title">告警信息</div>
                         </el-col>
                         <el-col :span="2">
-                            <el-button size="mini" type="success">全部设为已读</el-button>
+                            <el-button size="small" type="success">全部设为已读</el-button>
                         </el-col>
                         <el-col :span="2">
-                            <el-button size="mini" type="warning">清除全部记录</el-button>
+                            <el-button size="small" type="warning">清除全部记录</el-button>
                         </el-col>
                         <el-col :span="2" v-if="status==='showAll'">
-                            <el-button size="mini" type="danger" @click="showUnreadData">筛选未读信息</el-button>
+                            <el-button size="small" type="danger" @click="showUnreadData">筛选未读信息</el-button>
                         </el-col>
                         <el-col :span="2" v-if="status==='showUnread'">
-                            <el-button size="mini" type="primary" @click="showAllData">展示全部信息</el-button>
+                            <el-button size="small" type="primary" @click="showAllData">展示全部信息</el-button>
                         </el-col>
                     </el-row>
                 </el-row>
-                <el-row style="margin-top: 10px">
+                <el-row style="margin-top: 10px; width: 1280px">
                     <template>
                         <el-table
                                 :data="tableData"
                                 style="width: 100%"
-                                :row-class-name="tableRowClassName">
+                                :row-class-name="tableRowClassName" class="content-font">
                             <el-table-column
                                     label="id"
-                                    width="130">
+                                    width="100">
                                 <template slot-scope="scope">
                                     <span>{{ scope.row.id }}</span>
                                 </template>
@@ -64,18 +64,20 @@
                                     <span>{{ scope.row.description }}</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column label="操作">
+                            <el-table-column
+                                    label="操作"
+                                    width="240">
                                 <template slot-scope="scope">
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="primary"
                                             @click="preliminary_analysis(scope.$index, scope.row)">告警分析</el-button>
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="success"
                                             v-if="scope.row.status===0">设为已读</el-button>
                                     <el-button
-                                            size="mini"
+                                            size="small"
                                             type="warning"
                                             v-if="scope.row.status===1">清除记录</el-button>
                                 </template>
@@ -83,7 +85,7 @@
                         </el-table>
                     </template>
                 </el-row>
-                <el-row style="margin-top: 20px" v-if="status==='showAll'">
+                <el-row style="margin-top: 20px; width: 1265px" v-if="status==='showAll'">
                     <el-pagination
                             layout="prev, pager, next"
                             background
@@ -256,10 +258,13 @@
     }
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
         line-height: 28px
+    }
+    .content-font{
+        font-size: 16px;
     }
 </style>

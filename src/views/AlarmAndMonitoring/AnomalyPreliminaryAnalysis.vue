@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation/>
-        <el-row>
+        <el-row style="width: 1536px">
             <el-col :span="20" :offset="2">
                 <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
                     <el-col :span="5">
@@ -13,7 +13,7 @@
                         <div class="content"><b>异常事件id：</b></div>
                     </el-col>
                     <el-col :span="2">
-                        <el-select v-model="value" size="mini" placeholder="请选择">
+                        <el-select v-model="value" size="small" placeholder="请选择">
                             <el-option
                                     v-for="item in options"
                                     :key="item.value"
@@ -23,7 +23,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2">
-                        <el-button type="primary" size="mini">点击切换</el-button>
+                        <el-button type="primary" size="small">点击切换</el-button>
                     </el-col>
                 </el-row>
                 <div v-if="status==='performance'">
@@ -96,11 +96,11 @@
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 10px; margin-bottom: 40px; text-align: left; display: flex; align-items: center">
-                        <el-col :span="4">
+                        <el-col :span="5">
                             <div class="content"><b>根因推理与性能因果关系分析</b></div>
                         </el-col>
                         <el-col :span="5">
-                            <el-button type="primary" size="mini" @click="root_cause_analysis">点击前往</el-button>
+                            <el-button type="primary" size="small" @click="root_cause_analysis">点击前往</el-button>
                         </el-col>
                     </el-row>
                 </div>
@@ -149,7 +149,7 @@
                     </el-row>
                     <el-row style="margin-top:5px; text-align: left; display: flex; align-items: center">
                         <el-col :span="23">
-                            <div style="width:100%;font-size: 12px;background: white;padding-top: 5px; padding-bottom: 5px; padding-left: 30px; padding-right: 10px">
+                            <div style="width:100%;font-size: 16px;background: white;padding-top: 5px; padding-bottom: 5px; padding-left: 30px; padding-right: 10px">
                                 <p>异常描述：Service:carts的QPS指标下降，Service:carts的Latency指标相较于正常业务情况显著升高。</p>
                                 <p>可能原因：Container:carts的网络出现故障、部分Container:carts失联、IP为192.168.199.32的服务器网络出现故障。</p>
                                 <p>建议解决方案：检查Container:carts是否处于正常工作状态、检查IP为192.168.199.32的服务器网络是否畅通。</p>
@@ -171,7 +171,7 @@
                             <div class="content">工作流 a 开始时间：2020-06-10 09:38:00</div>
                         </el-col>
                         <el-col :span="5">
-                            <el-button type="primary" size="mini" @click="intelligence_analysis">智能分析</el-button>
+                            <el-button type="primary" size="small" @click="intelligence_analysis">智能分析</el-button>
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
@@ -179,7 +179,7 @@
                             <div class="content">工作流 b 开始时间：2020-06-10 09:39:00</div>
                         </el-col>
                         <el-col :span="5">
-                            <el-button type="primary" size="mini" @click="intelligence_analysis">智能分析</el-button>
+                            <el-button type="primary" size="small" @click="intelligence_analysis">智能分析</el-button>
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 10px; text-align: left; display: flex; align-items: center">
@@ -187,7 +187,7 @@
                             <div class="content">工作流 c 开始时间：2020-06-10 09:40:00</div>
                         </el-col>
                         <el-col :span="5">
-                            <el-button type="primary" size="mini" @click="intelligence_analysis">智能分析</el-button>
+                            <el-button type="primary" size="small" @click="intelligence_analysis">智能分析</el-button>
                         </el-col>
                     </el-row>
                     <el-row style="margin-top: 30px; margin-bottom: 40px; text-align: left; display: flex; align-items: center">
@@ -195,7 +195,7 @@
                             <div class="title" @click="root_cause_analysis"><b>根因推理</b></div>
                         </el-col>
                         <el-col :span="5">
-                            <el-button type="success" size="mini" @click="root_cause_analysis">点击前往</el-button>
+                            <el-button type="success" size="small" @click="root_cause_analysis">点击前往</el-button>
                         </el-col>
                     </el-row>
                 </div>
@@ -263,7 +263,7 @@
 <style scoped>
     .title{
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bolder;
         color:#101010;
         height: 28px;
@@ -271,7 +271,7 @@
     }
     .content{
         margin-left: 10px;
-        font-size: 14px;
+        font-size: 16px;
         color:#101010;
         height: 28px;
         line-height: 28px
