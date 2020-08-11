@@ -286,6 +286,7 @@
                             }
                         }
                     },
+                    animation: false,
                     xAxis: [
                         {
                             type: "time",
