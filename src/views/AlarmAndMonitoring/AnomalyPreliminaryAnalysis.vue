@@ -23,7 +23,7 @@
                         </el-select>
                     </el-col>
                     <el-col :span="2">
-                        <el-button type="primary" size="small">点击切换</el-button>
+                        <el-button type="primary" size="small" @click="change_status">点击切换</el-button>
                     </el-col>
                 </el-row>
                 <div v-if="status==='performance'">
@@ -221,15 +221,6 @@
                 }, {
                     value: '104',
                     label: '104'
-                }, {
-                    value: '103',
-                    label: '103'
-                }, {
-                    value: '102',
-                    label: '102'
-                }, {
-                    value: '101',
-                    label: '101'
                 }],
                 value: 104
             }
@@ -240,6 +231,14 @@
             },
             intelligence_analysis(){
                 this.$router.push({ path: 'anomaly-intelligence-analysis'});
+            },
+            change_status(){
+                if(this.value == 104){
+                    this.status = 'log';
+                }
+                else if(this.value == 105){
+                    this.status = 'performance';
+                }
             }
         },
         created() {
@@ -249,6 +248,7 @@
             }
             else{
                 this.status = 'log';
+                this.value = 104;
             }
             if(this.status==='log'){
                 this.value = 104;
